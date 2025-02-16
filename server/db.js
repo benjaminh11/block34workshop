@@ -105,14 +105,7 @@ const createReservation = async ({
 // Fetch all reservations
 const fetchReservations = async () => {
   try {
-    const SQL = `
-      SELECT reservations.id, customers.name AS customer_name, 
-             restaurants.name AS restaurant_name, 
-             reservations.date, reservations.party_count
-      FROM reservations
-      JOIN customers ON reservations.customer_id = customers.id
-      JOIN restaurants ON reservations.restaurant_id = restaurants.id;
-    `;
+    const SQL = `SELECT * FROM reservations;`;
     const { rows } = await client.query(SQL);
     return rows;
   } catch (err) {
